@@ -2,11 +2,10 @@ package com.ohgiraffers.chap01requestmapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.PrintWriter;
 
 /*
 * 클래스 레벨에 @RequestMapping 어노테이션 사용이 가능하다.
@@ -21,6 +20,15 @@ public class ClassMappingTestController {
     @GetMapping("/regist")
     public String registOrder(Model model){
         model.addAttribute("message", "get 방식의 주문 등록용 핸들러 메소드를 호출함");
+
+        return "mappingResult";
+
+    }
+
+    @PostMapping("/regist")
+    public String registOrderPost(Model model){
+        model.addAttribute("message", "post 방식의 주문 등록용 핸들러 메소드를 호출함");
+
         return "mappingResult";
     }
 
