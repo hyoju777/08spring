@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("lecture")
 public class LectureController {
-
     @GetMapping("expression")
     public ModelAndView expression(ModelAndView mv){
         mv.setViewName("lecture/expression");
