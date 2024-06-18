@@ -3,6 +3,7 @@ package com.ohgiraffers.chap07thymeleaf.controller;
 import com.ohgiraffers.chap07thymeleaf.model.dto.MemberDTO;
 import com.ohgiraffers.chap07thymeleaf.model.dto.SelectCriteria;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,8 +48,34 @@ public class LectureController {
         SelectCriteria selectCriteria = new SelectCriteria(1, 10, 3);
         mv.addObject("selectCriteria", selectCriteria);
 
+        MemberDTO member = new MemberDTO("홍길동", 20, '남', "서울시 서초구");
 
+        mv.addObject("member", member);
+
+        List<MemberDTO> memberList = new ArrayList<>();
+        memberList.add(new MemberDTO("홍길동", 20, '남', "서울시 서초구"));
+        memberList.add(new MemberDTO("유관순", 22, '여', "서울시 노원구"));
+        memberList.add(new MemberDTO("장보고", 40, '남', "서울시 종로구"));
+        memberList.add(new MemberDTO("신사임당", 30, '여', "서울시 성북구"));
+
+        mv.addObject("memberList", memberList);
+
+        Map<String, MemberDTO> memberMap = new HashMap<>();
+        memberMap.put("m01", new MemberDTO("홍길동", 20, '남', "서울시 서초구"));
+        memberMap.put("m02", new MemberDTO("유관순", 22, '여', "서울시 노원구"));
+        memberMap.put("m03", new MemberDTO("장보고", 40, '남', "서울시 종로구"));
+        memberMap.put("m04", new MemberDTO("신사임당", 30, '여', "서울시 성북구"));
+
+        mv.addObject("memberMap", memberMap);
         mv.setViewName("/lecture/etc");
+        return mv;
+    }
+
+    @GetMapping("/fragment")
+    public ModelAndView fragment(ModelAndView mv){
+        mv.addObject("test1", "values1");
+        mv.addObject("test2", "values2");
+        mv.setViewName("/lecture/fragment");
         return mv;
     }
 }

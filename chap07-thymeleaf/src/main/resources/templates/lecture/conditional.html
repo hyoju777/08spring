@@ -17,10 +17,10 @@
     <p th:if="${ num < 0 }">넘어온 값은 0보다 작다.</p>
     <p th:unless="${ num < 0 }">넘어온 값은 0보다 크다.</p>	<!-- 조건에 해당하지 않으면 -->
 
-    <th:block th:if="${ str == '사과' }">				<!-- th:block을 사용할 수도 있다. -->
+    <th:block th:if="${ str eq '사과' }">				<!-- th:block을 사용할 수도 있다. -->
         <p>사과 좋아요!</p>
     </th:block>
-    <th:block th:if="${ str == '바나나' }">
+    <th:block th:if="${ str eq '바나나' }">
         <p>바나나 좋아요!</p>
     </th:block>
 
